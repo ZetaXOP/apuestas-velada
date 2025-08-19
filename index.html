@@ -12,7 +12,6 @@
       font-family: Arial, sans-serif;
       text-align: center;
       color: white;
-
       background: linear-gradient(-45deg, #ff007f, #000000, #ff4da6, #1a1a1a);
       background-size: 400% 400%;
       animation: moverFondo 10s ease infinite;
@@ -28,7 +27,7 @@
       width: 100%;
       max-height: 350px;
       object-fit: cover;
-      border-bottom: 5px solid #ff007f; /* decoración opcional */
+      border-bottom: 5px solid #ff007f;
     }
 
     .fight-row {
@@ -78,20 +77,21 @@
     .bet-button:hover {
       background: #ff4da6;
     }
-    .banner-inferior {
-  background-color: #000000; /* negro */
-  padding: 30px 20px;
-  margin-top: 40px;
-  text-align: center;
-  border-top: 5px solid #ff007f; /* opcional, para decoración */
-}
 
-.banner-inferior p {
-  color: #ffffff; /* texto blanco */
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
+    /* Banner inferior */
+    .banner-inferior {
+      background-color: #000000;
+      padding: 30px 20px;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 5px solid #ff007f;
+    }
+    .banner-inferior p {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
 
     /* Modal */
     .modal {
@@ -132,33 +132,36 @@
       border-radius: 5px;
       border: 1px solid #555;
     }
-    
+
+    /* Pantalla de anuncio */
     .anuncio-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9); /* fondo oscuro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.anuncio-overlay img {
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 15px;
-}
-
-    
-
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .anuncio-overlay img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 15px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Banner -->
+  <!-- Pantalla de anuncio -->
+  <div id="anuncio" class="anuncio-overlay">
+    <img src="img/anuncio.jpg" alt="Anuncio">
+  </div>
+
+  <!-- Banner superior -->
   <div class="banner">
     <img src="img/vekada.png" alt="Banner Velada">
   </div>
@@ -168,7 +171,7 @@
     <div class="fighter">
       <img src="img/eze.png" alt="GLOVIS">
       <h3>GLOVIS</h3>
-        <p class="descripcion">1.79 m<br>67 kg</p>
+      <p class="descripcion">1.79 m<br>67 kg</p>
       <div class="multiplier">x1.0</div>
       <button class="bet-button" onclick="abrirModal('GLOVIS', 1.0)">Apostar</button>
     </div>
@@ -178,7 +181,7 @@
     <div class="fighter">
       <img src="img/XOP.png" alt="XOP">
       <h3>XOP</h3>
-        <p class="descripcion">1.94 m<br>78 kg</p>
+      <p class="descripcion">1.94 m<br>78 kg</p>
       <div class="multiplier">x1.0</div>
       <button class="bet-button" onclick="abrirModal('XOP', 1.0)">Apostar</button>
     </div>
@@ -187,9 +190,9 @@
   <!-- Peleadores Fila 2 -->
   <div class="fight-row">
     <div class="fighter">
-      <img src="img/nat.png" alt="??">
-       <h3>NATNAEL</h3>
-        <p class="descripcion">1.80 m<br>70 kg</p>
+      <img src="img/nat.png" alt="NATNAEL">
+      <h3>NATNAEL</h3>
+      <p class="descripcion">1.80 m<br>70 kg</p>
       <div class="multiplier">x1.0</div>
       <button class="bet-button" onclick="abrirModal('NATNAEL', 1.0)">Apostar</button>
     </div>
@@ -197,13 +200,14 @@
       <img src="img/vs2.gif" alt="VS">
     </div>
     <div class="fighter">
-      <img src="img/super.png" alt="??">
-       <h3>SUPERCRACK</h3>
-        <p class="descripcion">1.82 m<br>65 kg</p>
+      <img src="img/super.png" alt="SUPERCRACK">
+      <h3>SUPERCRACK</h3>
+      <p class="descripcion">1.82 m<br>65 kg</p>
       <div class="multiplier">x1.0</div>
       <button class="bet-button" onclick="abrirModal('SUPERCRACK', 1.0)">Apostar</button>
     </div>
   </div>
+
   <!-- Peleadores Fila 3 -->
   <div class="fight-row">
     <div class="fighter">
@@ -217,7 +221,7 @@
       <img src="img/vs2.gif" alt="VS">
     </div>
     <div class="fighter">
-      <img src="img/luchador6.png" alt="Luchador 6">
+      <img src="img/luchador6.png" alt="LUCHADOR 6">
       <h3>LUCHADOR 6</h3>
       <p class="descripcion">1.90 m<br>75 kg</p>
       <div class="multiplier">x1.0</div>
@@ -244,22 +248,19 @@
       <button onclick="cerrarModal()">Cancelar</button>
     </div>
   </div>
-  <!-- Pantalla de anuncio -->
-<div id="anuncio" class="anuncio-overlay">
-  <img src="img/anuncio.jfif" alt="Anuncio">
-</div>
 
   <!-- Imagen que lleva a un enlace -->
-<a href="https://www.instagram.com/amantes.fc_/" target="_blank">
-  <img src="img/watch.png" alt="Enlace" style="width:200px; height:auto; margin-top:20px; cursor:pointer;">
-</a>
+  <a href="https://www.instagram.com/amantes.fc_/" target="_blank">
+    <img src="img/watch.png" alt="Enlace" style="width:200px; height:auto; margin-top:20px; cursor:pointer;">
+  </a>
 
-<!-- Banner inferior -->
-<div class="banner-inferior">
-  <p id="texto-banner">GLO --PRÓXIMAMENTE-- XOP</p>
-</div>
+  <!-- Banner inferior -->
+  <div class="banner-inferior">
+    <p id="texto-banner">GLO --PRÓXIMAMENTE-- XOP</p>
+  </div>
 
   <script>
+    // Modal apuestas
     let cantidad = 1;
     let peleador = "";
     let cuota = 1;
@@ -297,7 +298,7 @@
       };
 
       try {
-        await fetch("TU_URL_DEL_SCRIPT", {  // <- Reemplaza por la URL de tu Google Script
+        await fetch("TU_URL_DEL_SCRIPT", {
           method: "POST",
           body: JSON.stringify(datos),
           headers: { "Content-Type": "application/json" }
@@ -309,17 +310,21 @@
 
       cerrarModal();
     }
-  
-  window.onload = function() {
-    setTimeout(function() {
-      document.getElementById("anuncio").style.display = "none";
-    }, 2400); // 2 segundos
-  };
-</script>
 
+    // Pantalla de anuncio
+    window.addEventListener('load', function() {
+      const anuncio = document.getElementById("anuncio");
+      if (!anuncio) return;
+
+      setTimeout(function() {
+        anuncio.style.display = "none";
+      }, 4000); // 4 segundos
+
+      anuncio.addEventListener('click', function() {
+        anuncio.style.display = "none";
+      });
+    });
   </script>
 
 </body>
 </html>
-
-
