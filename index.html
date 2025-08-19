@@ -2,48 +2,81 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Amantes FC © - Apuestas</title>
+  <title>Amantes FC © - Apuestas Velada</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #111;
-      color: white;
+      padding: 0;
+      font-family: Arial, sans-serif;
       text-align: center;
+      color: white;
+
+      background: linear-gradient(-45deg, #ff007f, #000000, #ff4da6, #1a1a1a);
+      background-size: 400% 400%;
+      animation: moverFondo 10s ease infinite;
     }
-    header img {
+
+    @keyframes moverFondo {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .banner img {
       width: 100%;
-      height: 300px;
+      max-height: 350px;
       object-fit: cover;
+      border-bottom: 5px solid #ff007f; /* decoración opcional */
     }
-    .peleadores {
+
+    .fight-row {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin: 30px;
+      align-items: center;
+      margin: 40px 0;
+      flex-wrap: wrap;
     }
-    .card {
-      background: #222;
-      padding: 20px;
+
+    .fighter {
+      flex: 1;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .fighter img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 15px;
-      width: 250px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      border: 3px solid white;
     }
-    .card img {
-      width: 100%;
-      border-radius: 10px;
+
+    .vs img {
+      width: 100px;
+      height: auto;
+      margin: 0 20px;
     }
-    .card button {
-      margin-top: 10px;
-      padding: 10px;
-      width: 100%;
-      background: crimson;
+
+    .multiplier {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .bet-button {
+      padding: 10px 20px;
+      background: #ff007f;
       border: none;
-      border-radius: 8px;
       color: white;
       font-size: 16px;
+      border-radius: 10px;
       cursor: pointer;
     }
+
+    .bet-button:hover {
+      background: #ff4da6;
+    }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -53,12 +86,14 @@
       justify-content: center;
       align-items: center;
     }
+
     .modal-content {
       background: #222;
       padding: 20px;
       border-radius: 15px;
       width: 300px;
     }
+
     .counter {
       display: flex;
       justify-content: center;
@@ -66,53 +101,64 @@
       gap: 10px;
       margin: 10px 0;
     }
+
     .counter button {
       padding: 5px 10px;
       font-size: 18px;
+      cursor: pointer;
     }
+
     input {
       width: 90%;
       padding: 8px;
       margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #555;
     }
   </style>
 </head>
 <body>
 
   <!-- Banner -->
-  <header>
-    <img src="img/vekada.png" alt="Banner Amantes FC">
-  </header>
+  <div class="banner">
+    <img src="img/banner.jpg" alt="Banner Velada">
+  </div>
 
-  <!-- Peleadores -->
-  <section class="peleadores">
-    <div class="card">
-      <img src="img/eze.png" alt="GLOVIS">
-      <h3>GLOVIS</h3>
-      <p>Cuota: x1.0</p>
-      <button onclick="abrirModal('GLOVIS', 1.0)">Apostar</button>
+  <!-- Peleadores Fila 1 -->
+  <div class="fight-row">
+    <div class="fighter">
+      <img src="img/peleador1.jpg" alt="Peleador 1">
+      <div class="multiplier">x1.2</div>
+      <button class="bet-button" onclick="abrirModal('Peleador 1', 1.2)">Apostar</button>
     </div>
-    <div class="card">
-      <img src="img/XOP.png" alt="XOP">
-      <h3>XOP</h3>
-      <p>Cuota: x1.0</p>
-      <button onclick="abrirModal('XOP', 1.0)">Apostar</button>
+    <div class="vs">
+      <img src="img/vs.png" alt="VS">
     </div>
-       <div class="card">
-      <img src="img/.png" alt="3">
-      <h3>3</h3>
-      <p>Cuota: x1.0</p>
-      <button onclick="abrirModal('Peleador 3', 1.0)">Apostar</button>
-   </div>
-       <div class="card">
-      <img src="img/.png" alt="4">
-      <h3>4</h3>
-      <p>Cuota: x1.0</p>
-      <button onclick="abrirModal('Peleador 4', 1.0)">Apostar</button>
-         
-  </section>
+    <div class="fighter">
+      <img src="img/peleador2.jpg" alt="Peleador 2">
+      <div class="multiplier">x2.0</div>
+      <button class="bet-button" onclick="abrirModal('Peleador 2', 2.0)">Apostar</button>
+    </div>
+  </div>
 
-  <!-- Modal -->
+  <!-- Peleadores Fila 2 -->
+  <div class="fight-row">
+    <div class="fighter">
+      <img src="img/peleador3.jpg" alt="Peleador 3">
+      <div class="multiplier">x1.5</div>
+      <button class="bet-button" onclick="abrirModal('Peleador 3', 1.5)">Apostar</button>
+    </div>
+    <div class="vs">
+      <img src="img/vs.png" alt="VS">
+    </div>
+    <div class="fighter">
+      <img src="img/peleador4.jpg" alt="Peleador 4">
+      <div class="multiplier">x3.0</div>
+      <button class="bet-button" onclick="abrirModal('Peleador 4', 3.0)">Apostar</button>
+    </div>
+  </div>
+
+  <!-- Modal de apuesta -->
   <div class="modal" id="modal">
     <div class="modal-content">
       <h3 id="modal-title"></h3>
@@ -155,50 +201,36 @@
       document.getElementById("cantidad").innerText = cantidad;
     }
 
-    function confirmarApuesta() {
+    async function confirmarApuesta() {
       let nombre = document.getElementById("nombre").value;
       if (nombre.trim() === "") {
         alert("Debes poner tu nombre");
         return;
       }
-      alert(`✅ ${nombre} ha apostado ${cantidad}€ a ${peleador} (cuota x${cuota})`);
+
+      let datos = {
+        nombre: nombre,
+        peleador: peleador,
+        cantidad: cantidad,
+        cuota: cuota
+      };
+
+      try {
+        await fetch("TU_URL_DEL_SCRIPT", {  // <- Reemplaza por la URL de tu Google Script
+          method: "POST",
+          body: JSON.stringify(datos),
+          headers: { "Content-Type": "application/json" }
+        });
+        alert(`✅ ${nombre} ha apostado ${cantidad}€ a ${peleador} (cuota x${cuota})`);
+      } catch (e) {
+        alert("❌ Error al enviar la apuesta");
+      }
+
       cerrarModal();
-      // Aquí podrías enviar los datos a Google Sheets si quieres
     }
   </script>
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Apuestas Velada</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      
-      /* Degradado inicial */
-      background: linear-gradient(-45deg, #ff007f, #000000, #ff4da6, #1a1a1a);
-      background-size: 400% 400%;
-      animation: moverFondo 10s ease infinite;
-    }
 
-    @keyframes moverFondo {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-  </style>
-</head>
-<body>
-  <h1>🔥 Bienvenidos a Amantes FC© 🔥</h1>
-</body>
-</html>
 
